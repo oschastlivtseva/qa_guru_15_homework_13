@@ -41,8 +41,9 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test) {
+test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -51,5 +52,3 @@ tasks.withType(Test) {
         }
     }
 }
-
-test {}
