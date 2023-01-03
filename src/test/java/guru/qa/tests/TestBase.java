@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 
 import guru.qa.helpers.Attach;
+import guru.qa.properties.Properties;
 import io.qameta.allure.selenide.AllureSelenide;
 import guru.qa.pages.RegistrationFormPage;
 import guru.qa.utils.Data;
@@ -21,6 +22,7 @@ public class TestBase {
     Data data = new Data();
     UserDataGenerator userDataGenerator = new UserDataGenerator();
     UserData testData = userDataGenerator.generateUserData();
+    static Properties properties = new Properties();
 
     @BeforeAll
     static void configure() {
@@ -31,10 +33,23 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
-        Configuration.browserSize = System.getProperty("browser_size", "770x1024");
+        Configuration.baseUrl = properties.baseUrl;
+
+        String browser = System.getProperty("browser");
+        if (browser.equals("")) {
+            Configuration.browser = properties.browser;
+        }
+
+        String browserVersion = System.getProperty("browser_version");
+        if (browserVersion.equals("")) {
+            Configuration.browserVersion = properties.browserVersion;
+        }
+
+        String browserSize = System.getProperty("browser_size");
+        if (browserSize.equals("")) {
+            Configuration.browserSize = properties.browserSize;
+        }
+
         String remoteUrl = System.getProperty("remote_url");
         if (!remoteUrl.equals("")) {
             Configuration.remote = remoteUrl;
