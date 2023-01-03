@@ -38,16 +38,22 @@ public class TestBase {
         String browser = System.getProperty("browser");
         if (browser.equals("")) {
             Configuration.browser = properties.browser;
+        } else {
+            Configuration.browser = browser;
         }
 
         String browserVersion = System.getProperty("browser_version");
         if (browserVersion.equals("")) {
             Configuration.browserVersion = properties.browserVersion;
+        } else {
+            Configuration.browserVersion = browserVersion;
         }
 
         String browserSize = System.getProperty("browser_size");
         if (browserSize.equals("")) {
             Configuration.browserSize = properties.browserSize;
+        } else {
+            Configuration.browserSize = browserSize;
         }
 
         String remoteUrl = System.getProperty("remote_url");
