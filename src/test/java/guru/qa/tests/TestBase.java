@@ -33,37 +33,11 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
+
         Configuration.baseUrl = properties.baseUrl;
-
-//        String browser = System.getProperty("browser");
-//        if (browser.equals("")) {
-//            Configuration.browser = properties.browser;
-//        } else {
-//            Configuration.browser = browser;
-//        }
         Configuration.browser = System.getProperty("browser", properties.browser);
-        System.out.println("---------------------------- Configuration.browser = " + Configuration.browser);
-        System.out.println("---------------------------- System.getProperty(\"browser\") = " + System.getProperty("browser"));
-
-//        String browserVersion = System.getProperty("browser_version");
-//        if (browserVersion.equals("")) {
-//            Configuration.browserVersion = properties.browserVersion;
-//        } else {
-//            Configuration.browserVersion = browserVersion;
-//        }
         Configuration.browserVersion = System.getProperty("browser_version", properties.browserVersion);
-        System.out.println("---------------------------- Configuration.browserVersion = " + Configuration.browserVersion);
-        System.out.println("---------------------------- System.getProperty(\"browser_version\") = " + System.getProperty("browser_version"));
-
-//        String browserSize = System.getProperty("browser_size");
-//        if (browserSize.equals("")) {
-//            Configuration.browserSize = properties.browserSize;
-//        } else {
-//            Configuration.browserSize = browserSize;
-//        }
         Configuration.browserSize = System.getProperty("browser_size", properties.browserSize);
-        System.out.println("---------------------------- Configuration.browserSize = " + Configuration.browserSize);
-        System.out.println("---------------------------- System.getProperty(\"browser_size\") = " + System.getProperty("browser_size"));
 
         String remoteUrl = System.getProperty("remote_url");
         if (!remoteUrl.equals("")) {
